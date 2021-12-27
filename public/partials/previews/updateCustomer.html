@@ -1,0 +1,12 @@
+<h2>The Update Customer Page</h2>
+<button ng-click="pdf.backToSelectFile()">Go Back</button>
+
+<!-- {{dp.selectedSystem}} -->
+<div><strong>Name:</strong> {{dp.selectedSystem.name}} <i ng-click='dp.editSystem("name")' class="fas fa-edit"></i> </div>
+<div><strong>Company:</strong> {{dp.selectedSystem.company}} <i ng-click='dp.editSystem("company")' class="fas fa-edit"></i> </div>
+<div><strong>Address:</strong> {{dp.selectedSystem.address}} <i ng-click='dp.editSystem("address")' class="fas fa-edit"></i> </div>
+<div><strong>Contacts:</strong> <ul> <li ng-repeat="email in dp.selectedSystem.contacts">
+     {{email}}
+     <i ng-click='dp.editSystem(email)' class="fas fa-edit"></i>
+     </li> </ul></div>
+

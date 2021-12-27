@@ -1,0 +1,14 @@
+<h2>Add a Customer Page</h2>
+<button ng-click="pdf.backToSelectFile()">Go Back</button>
+
+<br><br>
+<input type="text" placeholder="name" ng-model="dp.newSysName">
+<input type="text" placeholder="company" ng-model=dp.newSysCompany><br>
+<input type="text" placeholder="address" ng-model=dp.newSysAddress><br>
+<input type="text" placeholder="contact email" ng-model="dp.newSysEmail"> <button ng-click="dp.addNewSystemContact()">Add Email</button>
+<ul>
+    <li ng-repeat="email in dp.contactEmailList">{{email}} <span ng-click="dp.removeFromEmailContacts(email)">X</span></li>
+</ul>
+
+<br><br>
+<input ng-click="dp.addNewSystem()" type="button" value="submit">

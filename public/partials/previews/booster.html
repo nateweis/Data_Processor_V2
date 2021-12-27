@@ -1,0 +1,67 @@
+
+<h2>This is the booster PDF preview</h2>
+<button ng-click="pdf.backToSelectFile()">Go Back</button>
+<button ng-click="pdf.savePdf()">Make PDF</button>
+<button ng-click="dp.saveData()">Save Data</button>
+
+
+<div id="BoosterPdfDiv" class="pdfDiv">
+    <img class="waterLogo" src="../../img/Water logo.png" alt="">
+    <h3 class="scada">SCADA</h3>
+    <h3>{{dp.selectedSystem.name}} - {{dp.selectedSystem.address}}</h3>
+    <div class="blueRibbin"><h3>Booster Monthly Report - {{pdf.currentPumpData.date}} </h3></div>
+
+    <!-- <canvas id="startschart"></canvas>
+    <canvas id="totalrunchart"></canvas>
+    <canvas id="avrgrunchart"></canvas>
+    <canvas id="sleeptimechart"></canvas> -->
+        <h3 class="section-title"><em>Pump Starts</em></h3>
+    <canvas id="cStarts"></canvas>
+    <canvas id="cSAPD"></canvas>
+
+</div>
+
+<div id="BoosterPdfDiv2" class="pdfDiv">
+    <canvas id="start2SC"></canvas>
+    <h3 class="section-title"><em>Pump Runs</em></h3>
+    <canvas id="cRuns"></canvas>
+    <canvas id="cRAPD"></canvas>
+    <!-- <canvas id="g"></canvas> -->
+</div>
+
+<div id="BoosterPdfDiv3" class="pdfDiv">
+    <canvas id="cRAPC"></canvas>
+    <canvas id="run2SC"></canvas>
+    <table class="booster-faults">
+        <tr>
+            <th></th>
+            <th>High Pressure</th>
+            <th>Low Suction </th>
+            <th>VFD 1</th>
+            <th>VFD 2</th>
+        </tr>
+        <tr>
+            <td>Faults</td>
+            <td>{{pdf.currentPumpData["High Pressure Fault"]}}</td>
+            <td>{{pdf.currentPumpData["Low Suction Fault"]}}</td>
+            <td>{{pdf.currentPumpData["VFD 1 Fault"]}}</td>
+            <td>{{pdf.currentPumpData["VFD 2 Fault"]}}</td>
+        </tr>
+    </table>
+
+    <!-- <table>
+        <tr>
+            <th></th>
+            <th>All Pumps Running</th>
+            <th>Sleep Mode</th>
+        </tr>
+        <tr>
+            <td>Count</td>
+            <td>{{pdf.currentPumpData.bothRunningCount}}</td>
+            <td>{{pdf.currentPumpData.sleepCount}}</td>
+        </tr>
+    </table> -->
+
+    <p class="thanku">Thank you for being a US Pump Corp customer!</p>
+    <p>US Pump Corp </p>
+</div>
