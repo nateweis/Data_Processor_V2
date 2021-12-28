@@ -27,6 +27,7 @@ export const graph = ['$http', '$rootScope', '$timeout', function($http, $rootSc
 
     const collectData = () => {
         let allStartPP = [], allStartAPD = [], st2SlComp = [], allRunPP = [], allRunAPD = [], allRunAPC = [], run2SlComp = [], allWaterTemps = []
+        let pumpLabels;
         
         const pumpData = [
             ctrl.averagedPastData,
@@ -163,13 +164,14 @@ export const graph = ['$http', '$rootScope', '$timeout', function($http, $rootSc
             run2SlComp.push(holderRun2SlComp)
             allWaterTemps.push(waterTemp)
         })
+
+        $timeout(()=>pumpLabels = allStartPP[2].length === 3 ? ['Pump 1', 'Pump 2', 'Pump 3'] : ['Pump 1', 'Pump 2'] ,100)
         
-        
-        $timeout(()=>drawPieStarts(290, "Starts Total Per Pump", 'cStarts', ['Pump 1', 'Pump 2'], allStartPP),100)
-        $timeout(()=>drawPieStarts(280, "Starts Average Per Day", 'cSAPD', ['Pump 1', 'Pump 2'], allStartAPD),100)
-        $timeout(()=>drawPieRuns(290, "Runtime Total Per Pump", 'cRuns', ['Pump 1', 'Pump 2'], allRunPP),100)
-        $timeout(()=>drawPieRuns(280, "Runtime Average Per Day", 'cRAPD', ['Pump 1', 'Pump 2'], allRunAPD),100)
-        $timeout(()=>drawPieRuns(270, "Runtime Average Per Cycle", 'cRAPC', ['Pump 1', 'Pump 2'], allRunAPC),100)
+        $timeout(()=>drawPieStarts(290, "Starts Total Per Pump", 'cStarts', pumpLabels, allStartPP),100)
+        $timeout(()=>drawPieStarts(280, "Starts Average Per Day", 'cSAPD', pumpLabels, allStartAPD),100)
+        $timeout(()=>drawPieRuns(290, "Runtime Total Per Pump", 'cRuns', pumpLabels, allRunPP),100)
+        $timeout(()=>drawPieRuns(280, "Runtime Average Per Day", 'cRAPD', pumpLabels, allRunAPD),100)
+        $timeout(()=>drawPieRuns(270, "Runtime Average Per Cycle", 'cRAPC', pumpLabels, allRunAPC),100)
         
         if(pumpType === "Booster"){
             $timeout(()=>drawPieStarts(240, "Total Starts to Sleeps Comparison", 'start2SC', ['Sleeps', 'Starts'], st2SlComp),100)
