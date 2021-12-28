@@ -4,8 +4,69 @@
 <button ng-click="pdf.savePdf()">Make PDF</button>
 <button ng-click="dp.saveData()">Save Data</button>
 
-
 <div id="CondensatePdfDiv" class="pdfDiv">
+    <img class="waterLogo" src="../../img/Water logo.png" alt="">
+    <h3 class="scada">SCADA</h3>
+    <h3>{{dp.selectedSystem.name}} - {{dp.selectedSystem.address}}</h3>
+    <div class="blueRibbin"><h3>Condensate Monthly Report - {{pdf.currentPumpData.date}} </h3></div>
+
+
+    <h3 class="section-title"><em>Pump Starts</em></h3>
+    <canvas id="cStarts"></canvas>
+    <canvas id="cSAPD"></canvas>
+
+</div>
+
+<div id="CondensatePdfDiv2" class="pdfDiv">
+    
+    <h3 class="section-title"><em>Pump Runs</em></h3>
+    <canvas id="cRuns"></canvas>
+    <canvas id="cRAPD"></canvas>
+    <canvas id="cRAPC"></canvas>
+    
+
+</div>
+
+<div id="CondensatePdfDiv3" class="pdfDiv">
+    <h3 class="section-title"><em>Water Temperature</em></h3>
+    <canvas id="cWaterTemp"></canvas>
+
+    <table>
+        <tr>
+            <th></th>
+            <th class="p1">Pump 1</th>
+            <th class="p2">Pump 2</th>
+        </tr>
+        <tr>
+            <td>Lag Fault</td>
+            <td>{{pdf.currentPumpData["Pump 1 Lag Fault"]}}</td>
+            <td>{{pdf.currentPumpData["Pump 2 Lag Fault"]}}</td>
+        </tr>
+        <tr>
+            <td>Failed to Start</td>
+            <td>{{pdf.currentPumpData["Pump 1 Failed to Start"]}}</td>
+            <td>{{pdf.currentPumpData["Pump 2 Failed to Start"]}}</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th></th>
+            <th>High Level</th>
+            <th>High Temperature</th>
+        </tr>
+        <tr>
+            <td>Faults</td>
+            <td>{{pdf.currentPumpData["High Level Alarm"]}}</td>
+            <td>{{pdf.currentPumpData["Over Temp Fault"]}}</td>
+        </tr>
+    </table>
+
+    <p>Thank you for being a US Pump Corp customer!</p>
+    <p>US Pump Corp </p>
+</div>
+
+<!-- <div id="CondensatePdfDiv" class="pdfDiv">
     <img class="waterLogo" src="../../img/Water logo.png" alt="">
     <h3 class="scada">SCADA</h3>
     <h3>{{dp.selectedSystem.name}} - {{dp.selectedSystem.address}}</h3>
@@ -50,4 +111,4 @@
 
     <p class="thanku">Thank you for being a US Pump Corp customer!</p>
     <p>US Pump Corp </p>
-</div>
+</div> -->

@@ -568,9 +568,10 @@ export const pdf = ['$http', '$rootScope', '$timeout', function($http, $rootScop
     // ================================== //
 
     this.savePdf = () => {
-        if(type === 'Booster'){
-            const e = document.getElementById(`${ctrl.currentPumpData.type}PdfDiv`)
-            const e2 = document.getElementById(`${ctrl.currentPumpData.type}PdfDiv2`)
+        const e = document.getElementById(`${ctrl.currentPumpData.type}PdfDiv`)
+        const e2 = document.getElementById(`${ctrl.currentPumpData.type}PdfDiv2`)
+
+        if(type === 'Booster'|| type === 'Condensate'){
             const e3 = document.getElementById(`${ctrl.currentPumpData.type}PdfDiv3`)
             
             html2canvas(e,{scale: 2}).then(canvas => {
@@ -591,6 +592,22 @@ export const pdf = ['$http', '$rootScope', '$timeout', function($http, $rootScop
                     })
                 })
     
+            })
+        }
+        else{
+            html2canvas(e,{scale: 2}).then(canvas => {
+                const imgData = canvas.toDataURL('image/png')
+                html2canvas(e2,{}).then(c => {
+                    const imgD2 = c.toDataURL('image/png')
+                    const doc = new jspdf.jsPDF()
+                    const imgHeight = canvas.height * 210 / canvas.width
+                    // console.log(imgData)
+                    doc.addImage(imgData, 0, 0, 210, imgHeight -30)
+                    doc.addPage()
+                    doc.addImage(imgD2, 0, 0, 210, imgHeight -30)
+
+                    doc.save(`${ctrl.systemDisplayed.name} ${ctrl.currentPumpData.date} ${ctrl.currentPumpData.type} Monthly Report.pdf`)
+                })
             })
         }
     }
